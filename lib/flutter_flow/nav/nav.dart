@@ -83,14 +83,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : CategoryPage1Widget(),
             ),
             FFRoute(
-              name: 'category_Page',
-              path: 'categoryPage',
-              builder: (context, params) => CategoryPageWidget(),
-            ),
-            FFRoute(
               name: 'FilterPage',
               path: 'filterPage',
               builder: (context, params) => FilterPageWidget(),
+            ),
+            FFRoute(
+              name: 'category_Page',
+              path: 'categoryPage',
+              builder: (context, params) => CategoryPageWidget(),
             ),
             FFRoute(
               name: 'SalesPage',

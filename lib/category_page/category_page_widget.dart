@@ -146,12 +146,13 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                           ),
                         ),
                       ),
-                      Image.asset(
-                        'assets/images/Group.png',
-                        width: 18,
-                        height: 18,
-                        fit: BoxFit.cover,
-                      ),
+                      if (false)
+                        Image.asset(
+                          'assets/images/Group.png',
+                          width: 18,
+                          height: 18,
+                          fit: BoxFit.cover,
+                        ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(22, 0, 19, 0),
                         child: InkWell(

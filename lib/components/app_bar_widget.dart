@@ -84,11 +84,16 @@ class _AppBarWidgetState extends State<AppBarWidget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/bag_(2)_1.png',
-                width: 17.4,
-                height: 23.7,
-                fit: BoxFit.cover,
+              InkWell(
+                onTap: () async {
+                  context.pushNamed('Cart_Page');
+                },
+                child: Image.asset(
+                  'assets/images/bag_(2)_1.png',
+                  width: 17.4,
+                  height: 23.7,
+                  fit: BoxFit.cover,
+                ),
               ),
             ],
           ),
