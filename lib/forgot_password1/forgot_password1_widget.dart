@@ -1,4 +1,4 @@
-import '../components/app_bar_widget.dart';
+import '../components/backbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -45,9 +45,7 @@ class _ForgotPassword1WidgetState extends State<ForgotPassword1Widget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              AppBarWidget(
-                appTitle: ' ',
-              ),
+              BackbarWidget(),
               Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,

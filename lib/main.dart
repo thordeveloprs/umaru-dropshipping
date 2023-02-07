@@ -103,9 +103,9 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Home': HomeWidget(),
-      'category_Page1': CategoryPage1Widget(),
       'WishList': WishListWidget(),
-      'edit_Profile': EditProfileWidget(),
+      'category_Page1': CategoryPage1Widget(),
+      'Menu': MenuWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -133,14 +133,6 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.grid_view,
-              size: 24,
-            ),
-            label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.favorite_border,
               size: 24,
             ),
@@ -149,7 +141,15 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person_outline,
+              Icons.grid_view,
+              size: 24,
+            ),
+            label: 'Home',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
               size: 24,
             ),
             label: 'Home',

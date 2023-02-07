@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class EditProfileWidget extends StatefulWidget {
-  const EditProfileWidget({Key? key}) : super(key: key);
+class AccDetailWidget extends StatefulWidget {
+  const AccDetailWidget({Key? key}) : super(key: key);
 
   @override
-  _EditProfileWidgetState createState() => _EditProfileWidgetState();
+  _AccDetailWidgetState createState() => _AccDetailWidgetState();
 }
 
-class _EditProfileWidgetState extends State<EditProfileWidget> {
+class _AccDetailWidgetState extends State<AccDetailWidget> {
   TextEditingController? textController1;
   TextEditingController? textController2;
   TextEditingController? textController3;

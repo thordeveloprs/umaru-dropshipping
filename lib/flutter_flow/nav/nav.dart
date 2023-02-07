@@ -71,7 +71,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Menu',
               path: 'menu',
-              builder: (context, params) => MenuWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Menu')
+                  : MenuWidget(),
             ),
             FFRoute(
               name: 'category_Page1',
@@ -190,16 +192,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => DeliveryAddressWidget(),
             ),
             FFRoute(
-              name: 'edit_Profile',
-              path: 'editProfile',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'edit_Profile')
-                  : EditProfileWidget(),
-            ),
-            FFRoute(
               name: 'shipping_Page',
               path: 'shippingPage',
               builder: (context, params) => ShippingPageWidget(),
+            ),
+            FFRoute(
+              name: 'acc_detail',
+              path: 'accDetail',
+              builder: (context, params) => AccDetailWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

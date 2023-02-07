@@ -29,5 +29,5 @@ export 'order_detail/order_detail_widget.dart' show OrderDetailWidget;
 export 'review_page/review_page_widget.dart' show ReviewPageWidget;
 export 'delivery_address/delivery_address_widget.dart'
     show DeliveryAddressWidget;
-export 'edit_profile/edit_profile_widget.dart' show EditProfileWidget;
 export 'shipping_page/shipping_page_widget.dart' show ShippingPageWidget;
+export 'acc_detail/acc_detail_widget.dart' show AccDetailWidget;

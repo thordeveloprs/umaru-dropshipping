@@ -110,77 +110,91 @@ class _MyAccountPageWidgetState extends State<MyAccountPageWidget> {
                                     ],
                                   ),
                                 ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 13, 0, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Devlivery Addresses',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
-                                          Icon(
-                                            Icons.arrow_forward_ios,
-                                            color: Color(0xFF1C86C2),
-                                            size: 24,
-                                          ),
-                                        ],
+                                InkWell(
+                                  onTap: () async {
+                                    context.pushNamed('delivery_Address');
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 13, 0, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Devlivery Addresses',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.black,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                            ),
+                                            Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Color(0xFF1C86C2),
+                                              size: 24,
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Divider(
-                                      thickness: 0.5,
-                                      color: Color(0x4D797979),
-                                    ),
-                                  ],
+                                      Divider(
+                                        thickness: 0.5,
+                                        color: Color(0x4D797979),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 13, 0, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Account details',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
-                                          Icon(
-                                            Icons.arrow_forward_ios,
-                                            color: Color(0xFF1C86C2),
-                                            size: 24,
-                                          ),
-                                        ],
+                                InkWell(
+                                  onTap: () async {
+                                    context.pushNamed('acc_detail');
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 13, 0, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Account details',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.black,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                            ),
+                                            Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Color(0xFF1C86C2),
+                                              size: 24,
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Divider(
-                                      thickness: 0.5,
-                                      color: Color(0x4D797979),
-                                    ),
-                                  ],
+                                      Divider(
+                                        thickness: 0.5,
+                                        color: Color(0x4D797979),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -191,8 +205,8 @@ class _MyAccountPageWidgetState extends State<MyAccountPageWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0, 181.24, 0, 0),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            context.pushNamed('Home');
                           },
                           text: 'Logout',
                           options: FFButtonOptions(

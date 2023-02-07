@@ -1,4 +1,4 @@
-import '../components/app_bar_widget.dart';
+import '../components/backbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -50,9 +50,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                AppBarWidget(
-                  appTitle: ' ',
-                ),
+                BackbarWidget(),
                 Expanded(
                   child: Align(
                     alignment: AlignmentDirectional(0, 0),
@@ -101,17 +99,23 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                         ),
-                                        Text(
-                                          ' Sign Up here',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Colors.black,
-                                                fontSize: 12,
-                                                letterSpacing: 0.5,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                        InkWell(
+                                          onTap: () async {
+                                            context
+                                                .pushNamed('RegisterForm_Page');
+                                          },
+                                          child: Text(
+                                            ' Sign Up here',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Colors.black,
+                                                  fontSize: 12,
+                                                  letterSpacing: 0.5,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -364,8 +368,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 13, 0, 0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        context.pushNamed('Home');
                                       },
                                       text: 'Sign in\n',
                                       options: FFButtonOptions(

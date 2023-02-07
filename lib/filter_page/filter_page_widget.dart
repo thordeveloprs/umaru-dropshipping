@@ -2,7 +2,6 @@ import '../components/app_bar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -84,9 +83,10 @@ class _FilterPageWidgetState extends State<FilterPageWidget> {
                           activeColor:
                               FlutterFlowTheme.of(context).primaryColor,
                           inactiveColor: Color(0xFF9E9E9E),
-                          min: 0,
-                          max: 0,
+                          min: 1,
+                          max: 100,
                           value: filterSliderValue ??= 1,
+                          divisions: 99,
                           onChanged: (newValue) {
                             newValue =
                                 double.parse(newValue.toStringAsFixed(4));
@@ -168,56 +168,43 @@ class _FilterPageWidgetState extends State<FilterPageWidget> {
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                           ),
-                          child: Builder(
-                            builder: (context) {
-                              final wrapTags = List.generate(
-                                  random_data.randomInteger(4, 4),
-                                  (index) => random_data.randomImageUrl(
-                                        0,
-                                        0,
-                                      )).toList();
-                              return Wrap(
-                                spacing: 8,
-                                runSpacing: 0,
-                                alignment: WrapAlignment.start,
-                                crossAxisAlignment: WrapCrossAlignment.start,
-                                direction: Axis.horizontal,
-                                runAlignment: WrapAlignment.start,
-                                verticalDirection: VerticalDirection.down,
-                                clipBehavior: Clip.none,
-                                children: List.generate(wrapTags.length,
-                                    (wrapTagsIndex) {
-                                  final wrapTagsItem = wrapTags[wrapTagsIndex];
-                                  return Container(
-                                    width: 77,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(5),
+                          child: Wrap(
+                            spacing: 8,
+                            runSpacing: 0,
+                            alignment: WrapAlignment.start,
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            direction: Axis.horizontal,
+                            runAlignment: WrapAlignment.start,
+                            verticalDirection: VerticalDirection.down,
+                            clipBehavior: Clip.none,
+                            children: [
+                              Container(
+                                width: 77,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Tags (1)',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Montserrat',
+                                            color: Colors.black,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                     ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Tags (1)',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color: Colors.black,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }),
-                              );
-                            },
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -252,57 +239,43 @@ class _FilterPageWidgetState extends State<FilterPageWidget> {
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                           ),
-                          child: Builder(
-                            builder: (context) {
-                              final wrapColorTags = List.generate(
-                                  random_data.randomInteger(4, 4),
-                                  (index) => random_data.randomImageUrl(
-                                        0,
-                                        0,
-                                      )).toList();
-                              return Wrap(
-                                spacing: 8,
-                                runSpacing: 0,
-                                alignment: WrapAlignment.start,
-                                crossAxisAlignment: WrapCrossAlignment.start,
-                                direction: Axis.horizontal,
-                                runAlignment: WrapAlignment.start,
-                                verticalDirection: VerticalDirection.down,
-                                clipBehavior: Clip.none,
-                                children: List.generate(wrapColorTags.length,
-                                    (wrapColorTagsIndex) {
-                                  final wrapColorTagsItem =
-                                      wrapColorTags[wrapColorTagsIndex];
-                                  return Container(
-                                    width: 77,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(5),
+                          child: Wrap(
+                            spacing: 8,
+                            runSpacing: 0,
+                            alignment: WrapAlignment.start,
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            direction: Axis.horizontal,
+                            runAlignment: WrapAlignment.start,
+                            verticalDirection: VerticalDirection.down,
+                            clipBehavior: Clip.none,
+                            children: [
+                              Container(
+                                width: 77,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Black (1)',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Montserrat',
+                                            color: Colors.black,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                     ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Black (1)',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color: Colors.black,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }),
-                              );
-                            },
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -337,57 +310,43 @@ class _FilterPageWidgetState extends State<FilterPageWidget> {
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                           ),
-                          child: Builder(
-                            builder: (context) {
-                              final wrapSizeTags = List.generate(
-                                  random_data.randomInteger(3, 3),
-                                  (index) => random_data.randomImageUrl(
-                                        200,
-                                        200,
-                                      )).toList();
-                              return Wrap(
-                                spacing: 8,
-                                runSpacing: 0,
-                                alignment: WrapAlignment.start,
-                                crossAxisAlignment: WrapCrossAlignment.start,
-                                direction: Axis.horizontal,
-                                runAlignment: WrapAlignment.start,
-                                verticalDirection: VerticalDirection.down,
-                                clipBehavior: Clip.none,
-                                children: List.generate(wrapSizeTags.length,
-                                    (wrapSizeTagsIndex) {
-                                  final wrapSizeTagsItem =
-                                      wrapSizeTags[wrapSizeTagsIndex];
-                                  return Container(
-                                    width: 77,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(5),
+                          child: Wrap(
+                            spacing: 8,
+                            runSpacing: 0,
+                            alignment: WrapAlignment.start,
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            direction: Axis.horizontal,
+                            runAlignment: WrapAlignment.start,
+                            verticalDirection: VerticalDirection.down,
+                            clipBehavior: Clip.none,
+                            children: [
+                              Container(
+                                width: 77,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '41 (1)',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Montserrat',
+                                            color: Colors.black,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                     ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          '41 (1)',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color: Colors.black,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }),
-                              );
-                            },
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -398,8 +357,8 @@ class _FilterPageWidgetState extends State<FilterPageWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 31),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('filterButton pressed ...');
+                  onPressed: () async {
+                    context.pop();
                   },
                   text: 'Apply',
                   options: FFButtonOptions(
