@@ -218,8 +218,8 @@ class _ReviewPageWidgetState extends State<ReviewPageWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 22, 16, 0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      context.pop();
                     },
                     text: 'Submit\n',
                     options: FFButtonOptions(
