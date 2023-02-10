@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'login_page_model.dart';
+export 'login_page_model.dart';
 
 class LoginPageWidget extends StatefulWidget {
   const LoginPageWidget({Key? key}) : super(key: key);
@@ -14,23 +16,25 @@ class LoginPageWidget extends StatefulWidget {
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
-  TextEditingController? textController1;
-  TextEditingController? textController2;
-  final _unfocusNode = FocusNode();
+  late LoginPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
+    _model = createModel(context, () => LoginPageModel());
+
+    _model.textController1 = TextEditingController();
+    _model.textController2 = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController1?.dispose();
-    textController2?.dispose();
     super.dispose();
   }
 
@@ -50,7 +54,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                BackbarWidget(),
+                wrapWithModel(
+                  model: _model.backbarModel,
+                  updateCallback: () => setState(() {}),
+                  child: BackbarWidget(),
+                ),
                 Expanded(
                   child: Align(
                     alignment: AlignmentDirectional(0, 0),
@@ -150,7 +158,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(12, 0, 0, 0),
                                               child: TextFormField(
-                                                controller: textController1,
+                                                controller:
+                                                    _model.textController1,
                                                 autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -235,6 +244,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
+                                                validator: _model
+                                                    .textController1Validator
+                                                    .asValidator(context),
                                               ),
                                             ),
                                           ),
@@ -272,7 +284,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(12, 0, 0, 0),
                                               child: TextFormField(
-                                                controller: textController2,
+                                                controller:
+                                                    _model.textController2,
                                                 autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -357,6 +370,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
+                                                validator: _model
+                                                    .textController2Validator
+                                                    .asValidator(context),
                                               ),
                                             ),
                                           ),

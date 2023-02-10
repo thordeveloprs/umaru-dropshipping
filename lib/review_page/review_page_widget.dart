@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'review_page_model.dart';
+export 'review_page_model.dart';
 
 class ReviewPageWidget extends StatefulWidget {
   const ReviewPageWidget({Key? key}) : super(key: key);
@@ -15,12 +17,21 @@ class ReviewPageWidget extends StatefulWidget {
 }
 
 class _ReviewPageWidgetState extends State<ReviewPageWidget> {
-  double? ratingBarValue;
-  final _unfocusNode = FocusNode();
+  late ReviewPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ReviewPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -39,8 +50,12 @@ class _ReviewPageWidgetState extends State<ReviewPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBar2Widget(
-                  appTitle: 'Write a review',
+                wrapWithModel(
+                  model: _model.appBar2Model,
+                  updateCallback: () => setState(() {}),
+                  child: AppBar2Widget(
+                    appTitle: 'Write a review',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
@@ -158,13 +173,13 @@ class _ReviewPageWidgetState extends State<ReviewPageWidget> {
                     children: [
                       RatingBar.builder(
                         onRatingUpdate: (newValue) =>
-                            setState(() => ratingBarValue = newValue),
+                            setState(() => _model.ratingBarValue = newValue),
                         itemBuilder: (context, index) => Icon(
                           Icons.star_rounded,
                           color: Color(0xFFF2C94C),
                         ),
                         direction: Axis.horizontal,
-                        initialRating: ratingBarValue ??= 3,
+                        initialRating: _model.ratingBarValue ??= 3,
                         unratedColor: Color(0x33000000),
                         itemCount: 5,
                         itemSize: 38,

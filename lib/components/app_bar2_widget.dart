@@ -3,6 +3,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'app_bar2_model.dart';
+export 'app_bar2_model.dart';
 
 class AppBar2Widget extends StatefulWidget {
   const AppBar2Widget({
@@ -17,6 +19,27 @@ class AppBar2Widget extends StatefulWidget {
 }
 
 class _AppBar2WidgetState extends State<AppBar2Widget> {
+  late AppBar2Model _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => AppBar2Model());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();

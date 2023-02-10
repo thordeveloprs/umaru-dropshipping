@@ -76,11 +76,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : MenuWidget(),
             ),
             FFRoute(
-              name: 'category_Page1',
-              path: 'categoryPage1',
+              name: 'ShopPage',
+              path: 'shopPage',
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'category_Page1')
-                  : CategoryPage1Widget(),
+                  ? NavBarPage(initialPage: 'ShopPage')
+                  : ShopPageWidget(),
             ),
             FFRoute(
               name: 'FilterPage',
@@ -103,13 +103,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'WishList')
                   : WishListWidget(),
-            ),
-            FFRoute(
-              name: 'product_Detail',
-              path: 'productDetail',
-              builder: (context, params) => ProductDetailWidget(
-                id: params.getParam('id', ParamType.String),
-              ),
             ),
             FFRoute(
               name: 'Cart_Page',
@@ -142,9 +135,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginPageWidget(),
             ),
             FFRoute(
-              name: 'forgot_Password1',
-              path: 'forgotPassword1',
-              builder: (context, params) => ForgotPassword1Widget(),
+              name: 'del_forgot_Password1',
+              path: 'delForgotPassword1',
+              builder: (context, params) => DelForgotPassword1Widget(),
             ),
             FFRoute(
               name: 'forgot_Password',
@@ -157,9 +150,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OrdersPageWidget(),
             ),
             FFRoute(
-              name: 'order_Details',
-              path: 'orderDetails',
-              builder: (context, params) => OrderDetailsWidget(),
+              name: 'del_order_Details',
+              path: 'delOrderDetails',
+              builder: (context, params) => DelOrderDetailsWidget(),
             ),
             FFRoute(
               name: 'menu_Page1',
@@ -192,14 +185,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => DeliveryAddressWidget(),
             ),
             FFRoute(
-              name: 'shipping_Page',
-              path: 'shippingPage',
-              builder: (context, params) => ShippingPageWidget(),
+              name: 'shipping_Policy',
+              path: 'shippingPolicy',
+              builder: (context, params) => ShippingPolicyWidget(),
             ),
             FFRoute(
               name: 'acc_detail',
               path: 'accDetail',
               builder: (context, params) => AccDetailWidget(),
+            ),
+            FFRoute(
+              name: 'product_Detail',
+              path: 'productDetail',
+              builder: (context, params) => ProductDetailWidget(
+                id: params.getParam('id', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

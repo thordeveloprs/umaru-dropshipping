@@ -1,14 +1,13 @@
 import '../components/add_address_app_bar_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
-import '../flutter_flow/flutter_flow_static_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/lat_lng.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mapbox_search/mapbox_search.dart';
 import 'package:provider/provider.dart';
+import 'add_address_page_model.dart';
+export 'add_address_page_model.dart';
 
 class AddAddressPageWidget extends StatefulWidget {
   const AddAddressPageWidget({Key? key}) : super(key: key);
@@ -18,48 +17,33 @@ class AddAddressPageWidget extends StatefulWidget {
 }
 
 class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
-  String? dropDownValue;
-  TextEditingController? textController1;
-  TextEditingController? textController2;
-  TextEditingController? textController3;
-  TextEditingController? textController4;
-  TextEditingController? textController5;
-  TextEditingController? textController6;
-  TextEditingController? textController7;
-  TextEditingController? textController8;
-  TextEditingController? textController9;
-  TextEditingController? textController10;
-  final _unfocusNode = FocusNode();
+  late AddAddressPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
-    textController4 = TextEditingController();
-    textController5 = TextEditingController();
-    textController6 = TextEditingController();
-    textController7 = TextEditingController();
-    textController8 = TextEditingController();
-    textController9 = TextEditingController();
-    textController10 = TextEditingController();
+    _model = createModel(context, () => AddAddressPageModel());
+
+    _model.textController1 = TextEditingController();
+    _model.textController2 = TextEditingController();
+    _model.textController3 = TextEditingController();
+    _model.textController4 = TextEditingController();
+    _model.textController5 = TextEditingController();
+    _model.textController6 = TextEditingController();
+    _model.textController7 = TextEditingController();
+    _model.textController8 = TextEditingController();
+    _model.textController9 = TextEditingController();
+    _model.textController10 = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController10?.dispose();
-    textController1?.dispose();
-    textController2?.dispose();
-    textController3?.dispose();
-    textController4?.dispose();
-    textController5?.dispose();
-    textController6?.dispose();
-    textController7?.dispose();
-    textController8?.dispose();
-    textController9?.dispose();
     super.dispose();
   }
 
@@ -77,8 +61,12 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AddAddressAppBarWidget(
-                  appTitle: 'Add Address',
+                wrapWithModel(
+                  model: _model.addAddressAppBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: AddAddressAppBarWidget(
+                    appTitle: 'Add Address',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 29, 16, 0),
@@ -126,7 +114,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 .secondaryBackground,
                           ),
                           child: TextFormField(
-                            controller: textController1,
+                            controller: _model.textController1,
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -173,6 +161,8 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
+                            validator: _model.textController1Validator
+                                .asValidator(context),
                           ),
                         ),
                       ),
@@ -224,7 +214,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 .secondaryBackground,
                           ),
                           child: TextFormField(
-                            controller: textController2,
+                            controller: _model.textController2,
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -271,6 +261,8 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
+                            validator: _model.textController2Validator
+                                .asValidator(context),
                           ),
                         ),
                       ),
@@ -322,7 +314,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 .secondaryBackground,
                           ),
                           child: TextFormField(
-                            controller: textController3,
+                            controller: _model.textController3,
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -369,6 +361,8 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
+                            validator: _model.textController3Validator
+                                .asValidator(context),
                           ),
                         ),
                       ),
@@ -422,7 +416,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                           child: FlutterFlowDropDown<String>(
                             options: <String>[],
                             onChanged: (val) =>
-                                setState(() => dropDownValue = val),
+                                setState(() => _model.dropDownValue = val),
                             width: 180,
                             height: 50,
                             textStyle:
@@ -482,7 +476,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(11, 0, 0, 0),
                             child: TextFormField(
-                              controller: textController4,
+                              controller: _model.textController4,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -538,33 +532,13 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context).bodyText1,
+                              validator: _model.textController4Validator
+                                  .asValidator(context),
                             ),
                           ),
                         ),
                       ),
                     ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 218,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: FlutterFlowStaticMap(
-                      location: LatLng(9.341465, -79.891704),
-                      apiKey: 'ENTER_YOUR_MAPBOX_API_KEY_HERE',
-                      style: MapBoxStyle.Light,
-                      width: 300,
-                      height: 300,
-                      fit: BoxFit.cover,
-                      borderRadius: BorderRadius.circular(0),
-                      zoom: 12,
-                      tilt: 0,
-                      rotation: 0,
-                    ),
                   ),
                 ),
                 Padding(
@@ -612,7 +586,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 .secondaryBackground,
                           ),
                           child: TextFormField(
-                            controller: textController5,
+                            controller: _model.textController5,
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -659,6 +633,8 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
+                            validator: _model.textController5Validator
+                                .asValidator(context),
                           ),
                         ),
                       ),
@@ -696,7 +672,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 .secondaryBackground,
                           ),
                           child: TextFormField(
-                            controller: textController6,
+                            controller: _model.textController6,
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -743,6 +719,8 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
+                            validator: _model.textController6Validator
+                                .asValidator(context),
                           ),
                         ),
                       ),
@@ -782,7 +760,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                   .secondaryBackground,
                             ),
                             child: TextFormField(
-                              controller: textController7,
+                              controller: _model.textController7,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -830,6 +808,8 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context).bodyText1,
+                              validator: _model.textController7Validator
+                                  .asValidator(context),
                             ),
                           ),
                         ),
@@ -870,7 +850,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                   .secondaryBackground,
                             ),
                             child: TextFormField(
-                              controller: textController8,
+                              controller: _model.textController8,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -918,6 +898,8 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context).bodyText1,
+                              validator: _model.textController8Validator
+                                  .asValidator(context),
                             ),
                           ),
                         ),
@@ -958,7 +940,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                   .secondaryBackground,
                             ),
                             child: TextFormField(
-                              controller: textController9,
+                              controller: _model.textController9,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -1006,6 +988,8 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context).bodyText1,
+                              validator: _model.textController9Validator
+                                  .asValidator(context),
                             ),
                           ),
                         ),
@@ -1061,7 +1045,7 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                   .secondaryBackground,
                             ),
                             child: TextFormField(
-                              controller: textController10,
+                              controller: _model.textController10,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -1109,6 +1093,8 @@ class _AddAddressPageWidgetState extends State<AddAddressPageWidget> {
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context).bodyText1,
+                              validator: _model.textController10Validator
+                                  .asValidator(context),
                             ),
                           ),
                         ),

@@ -4,6 +4,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'order_history_model.dart';
+export 'order_history_model.dart';
 
 class OrderHistoryWidget extends StatefulWidget {
   const OrderHistoryWidget({Key? key}) : super(key: key);
@@ -13,11 +15,21 @@ class OrderHistoryWidget extends StatefulWidget {
 }
 
 class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
-  final _unfocusNode = FocusNode();
+  late OrderHistoryModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => OrderHistoryModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -36,8 +48,12 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBar2Widget(
-                  appTitle: 'Order history',
+                wrapWithModel(
+                  model: _model.appBar2Model,
+                  updateCallback: () => setState(() {}),
+                  child: AppBar2Widget(
+                    appTitle: 'Order history',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 38, 16, 0),

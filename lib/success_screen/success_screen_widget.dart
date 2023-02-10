@@ -4,6 +4,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'success_screen_model.dart';
+export 'success_screen_model.dart';
 
 class SuccessScreenWidget extends StatefulWidget {
   const SuccessScreenWidget({Key? key}) : super(key: key);
@@ -13,11 +15,21 @@ class SuccessScreenWidget extends StatefulWidget {
 }
 
 class _SuccessScreenWidgetState extends State<SuccessScreenWidget> {
-  final _unfocusNode = FocusNode();
+  late SuccessScreenModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => SuccessScreenModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }

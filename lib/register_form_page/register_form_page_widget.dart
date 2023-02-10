@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'register_form_page_model.dart';
+export 'register_form_page_model.dart';
 
 class RegisterFormPageWidget extends StatefulWidget {
   const RegisterFormPageWidget({Key? key}) : super(key: key);
@@ -14,32 +16,28 @@ class RegisterFormPageWidget extends StatefulWidget {
 }
 
 class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
-  TextEditingController? textController2;
-  TextEditingController? textFieldFullNameController;
-  TextEditingController? textController3;
-  TextEditingController? textController4;
-  TextEditingController? textController5;
-  final _unfocusNode = FocusNode();
+  late RegisterFormPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    textController2 = TextEditingController();
-    textFieldFullNameController = TextEditingController();
-    textController3 = TextEditingController();
-    textController4 = TextEditingController();
-    textController5 = TextEditingController();
+    _model = createModel(context, () => RegisterFormPageModel());
+
+    _model.textFieldFullNameController = TextEditingController();
+    _model.textController2 = TextEditingController();
+    _model.textController3 = TextEditingController();
+    _model.textController4 = TextEditingController();
+    _model.textController5 = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController2?.dispose();
-    textFieldFullNameController?.dispose();
-    textController3?.dispose();
-    textController4?.dispose();
-    textController5?.dispose();
     super.dispose();
   }
 
@@ -56,7 +54,11 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              BackbarWidget(),
+              wrapWithModel(
+                model: _model.backbarModel,
+                updateCallback: () => setState(() {}),
+                child: BackbarWidget(),
+              ),
               Align(
                 alignment: AlignmentDirectional(0, 0),
                 child: SingleChildScrollView(
@@ -169,8 +171,8 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: TextFormField(
-                                                  controller:
-                                                      textFieldFullNameController,
+                                                  controller: _model
+                                                      .textFieldFullNameController,
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -271,6 +273,9 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  validator: _model
+                                                      .textFieldFullNameControllerValidator
+                                                      .asValidator(context),
                                                 ),
                                               ),
                                             ),
@@ -308,7 +313,8 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: TextFormField(
-                                                  controller: textController2,
+                                                  controller:
+                                                      _model.textController2,
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -409,6 +415,9 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  validator: _model
+                                                      .textController2Validator
+                                                      .asValidator(context),
                                                 ),
                                               ),
                                             ),
@@ -446,7 +455,8 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: TextFormField(
-                                                  controller: textController3,
+                                                  controller:
+                                                      _model.textController3,
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -547,6 +557,9 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  validator: _model
+                                                      .textController3Validator
+                                                      .asValidator(context),
                                                 ),
                                               ),
                                             ),
@@ -584,7 +597,8 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: TextFormField(
-                                                  controller: textController4,
+                                                  controller:
+                                                      _model.textController4,
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -685,6 +699,9 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  validator: _model
+                                                      .textController4Validator
+                                                      .asValidator(context),
                                                 ),
                                               ),
                                             ),
@@ -722,7 +739,8 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(12, 0, 0, 0),
                                                 child: TextFormField(
-                                                  controller: textController5,
+                                                  controller:
+                                                      _model.textController5,
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -824,6 +842,9 @@ class _RegisterFormPageWidgetState extends State<RegisterFormPageWidget> {
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  validator: _model
+                                                      .textController5Validator
+                                                      .asValidator(context),
                                                 ),
                                               ),
                                             ),

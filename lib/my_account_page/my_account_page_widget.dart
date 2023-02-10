@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'my_account_page_model.dart';
+export 'my_account_page_model.dart';
 
 class MyAccountPageWidget extends StatefulWidget {
   const MyAccountPageWidget({Key? key}) : super(key: key);
@@ -14,11 +16,21 @@ class MyAccountPageWidget extends StatefulWidget {
 }
 
 class _MyAccountPageWidgetState extends State<MyAccountPageWidget> {
-  final _unfocusNode = FocusNode();
+  late MyAccountPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => MyAccountPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -37,8 +49,12 @@ class _MyAccountPageWidgetState extends State<MyAccountPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBar2Widget(
-                  appTitle: 'My Account',
+                wrapWithModel(
+                  model: _model.appBar2Model,
+                  updateCallback: () => setState(() {}),
+                  child: AppBar2Widget(
+                    appTitle: 'My Account',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),

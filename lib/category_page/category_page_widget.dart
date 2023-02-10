@@ -5,6 +5,8 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'category_page_model.dart';
+export 'category_page_model.dart';
 
 class CategoryPageWidget extends StatefulWidget {
   const CategoryPageWidget({Key? key}) : super(key: key);
@@ -14,20 +16,24 @@ class CategoryPageWidget extends StatefulWidget {
 }
 
 class _CategoryPageWidgetState extends State<CategoryPageWidget> {
-  TextEditingController? textController;
-  final _unfocusNode = FocusNode();
+  late CategoryPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    _model = createModel(context, () => CategoryPageModel());
+
+    _model.textController = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController?.dispose();
     super.dispose();
   }
 
@@ -45,8 +51,12 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBarWidget(
-                  appTitle: 'Category',
+                wrapWithModel(
+                  model: _model.appBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: AppBarWidget(
+                    appTitle: 'Category',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 21, 0, 2),
@@ -81,7 +91,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         11.73, 0, 0, 0),
                                     child: TextFormField(
-                                      controller: textController,
+                                      controller: _model.textController,
                                       autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -138,6 +148,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                             fontSize: 18,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                      validator: _model.textControllerValidator
+                                          .asValidator(context),
                                     ),
                                   ),
                                 ),

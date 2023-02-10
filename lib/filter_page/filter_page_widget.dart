@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'filter_page_model.dart';
+export 'filter_page_model.dart';
 
 class FilterPageWidget extends StatefulWidget {
   const FilterPageWidget({Key? key}) : super(key: key);
@@ -14,19 +16,23 @@ class FilterPageWidget extends StatefulWidget {
 }
 
 class _FilterPageWidgetState extends State<FilterPageWidget> {
-  double? filterSliderValue;
-  final _unfocusNode = FocusNode();
+  late FilterPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _model = createModel(context, () => FilterPageModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -44,8 +50,12 @@ class _FilterPageWidgetState extends State<FilterPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              AppBarWidget(
-                appTitle: 'Filter',
+              wrapWithModel(
+                model: _model.appBarModel,
+                updateCallback: () => setState(() {}),
+                child: AppBarWidget(
+                  appTitle: 'Filter',
+                ),
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -85,12 +95,12 @@ class _FilterPageWidgetState extends State<FilterPageWidget> {
                           inactiveColor: Color(0xFF9E9E9E),
                           min: 1,
                           max: 100,
-                          value: filterSliderValue ??= 1,
+                          value: _model.filterSliderValue ??= 1,
                           divisions: 99,
                           onChanged: (newValue) {
                             newValue =
                                 double.parse(newValue.toStringAsFixed(4));
-                            setState(() => filterSliderValue = newValue);
+                            setState(() => _model.filterSliderValue = newValue);
                           },
                         ),
                       ),

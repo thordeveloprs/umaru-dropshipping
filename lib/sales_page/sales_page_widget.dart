@@ -5,6 +5,8 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'sales_page_model.dart';
+export 'sales_page_model.dart';
 
 class SalesPageWidget extends StatefulWidget {
   const SalesPageWidget({Key? key}) : super(key: key);
@@ -14,11 +16,21 @@ class SalesPageWidget extends StatefulWidget {
 }
 
 class _SalesPageWidgetState extends State<SalesPageWidget> {
-  final _unfocusNode = FocusNode();
+  late SalesPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => SalesPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -37,14 +49,18 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBarWidget(
-                  appTitle: 'Sales Page',
+                wrapWithModel(
+                  model: _model.appBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: AppBarWidget(
+                    appTitle: 'Sales Page',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(15, 26, 15, 0),
                   child: InkWell(
                     onTap: () async {
-                      context.pushNamed('category_Page1');
+                      context.pushNamed('ShopPage');
                     },
                     child: Image.asset(
                       'assets/images/Screen_Shot_2022-12-02_at_2.14_1.png',

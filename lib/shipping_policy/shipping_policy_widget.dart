@@ -4,20 +4,32 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'shipping_policy_model.dart';
+export 'shipping_policy_model.dart';
 
-class ShippingPageWidget extends StatefulWidget {
-  const ShippingPageWidget({Key? key}) : super(key: key);
+class ShippingPolicyWidget extends StatefulWidget {
+  const ShippingPolicyWidget({Key? key}) : super(key: key);
 
   @override
-  _ShippingPageWidgetState createState() => _ShippingPageWidgetState();
+  _ShippingPolicyWidgetState createState() => _ShippingPolicyWidgetState();
 }
 
-class _ShippingPageWidgetState extends State<ShippingPageWidget> {
-  final _unfocusNode = FocusNode();
+class _ShippingPolicyWidgetState extends State<ShippingPolicyWidget> {
+  late ShippingPolicyModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ShippingPolicyModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -36,8 +48,12 @@ class _ShippingPageWidgetState extends State<ShippingPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBar2Widget(
-                  appTitle: 'Shipping Policy',
+                wrapWithModel(
+                  model: _model.appBar2Model,
+                  updateCallback: () => setState(() {}),
+                  child: AppBar2Widget(
+                    appTitle: 'Shipping Policy',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(14, 0, 14, 0),

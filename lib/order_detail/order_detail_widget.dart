@@ -4,6 +4,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'order_detail_model.dart';
+export 'order_detail_model.dart';
 
 class OrderDetailWidget extends StatefulWidget {
   const OrderDetailWidget({Key? key}) : super(key: key);
@@ -13,11 +15,21 @@ class OrderDetailWidget extends StatefulWidget {
 }
 
 class _OrderDetailWidgetState extends State<OrderDetailWidget> {
-  final _unfocusNode = FocusNode();
+  late OrderDetailModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => OrderDetailModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -36,8 +48,12 @@ class _OrderDetailWidgetState extends State<OrderDetailWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBar2Widget(
-                  appTitle: 'Order Detail',
+                wrapWithModel(
+                  model: _model.appBar2Model,
+                  updateCallback: () => setState(() {}),
+                  child: AppBar2Widget(
+                    appTitle: 'Order Detail',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),

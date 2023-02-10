@@ -5,29 +5,36 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'del_forgot_password1_model.dart';
+export 'del_forgot_password1_model.dart';
 
-class ForgotPassword1Widget extends StatefulWidget {
-  const ForgotPassword1Widget({Key? key}) : super(key: key);
+class DelForgotPassword1Widget extends StatefulWidget {
+  const DelForgotPassword1Widget({Key? key}) : super(key: key);
 
   @override
-  _ForgotPassword1WidgetState createState() => _ForgotPassword1WidgetState();
+  _DelForgotPassword1WidgetState createState() =>
+      _DelForgotPassword1WidgetState();
 }
 
-class _ForgotPassword1WidgetState extends State<ForgotPassword1Widget> {
-  TextEditingController? textController;
-  final _unfocusNode = FocusNode();
+class _DelForgotPassword1WidgetState extends State<DelForgotPassword1Widget> {
+  late DelForgotPassword1Model _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    _model = createModel(context, () => DelForgotPassword1Model());
+
+    _model.textController = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController?.dispose();
     super.dispose();
   }
 
@@ -45,7 +52,11 @@ class _ForgotPassword1WidgetState extends State<ForgotPassword1Widget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              BackbarWidget(),
+              wrapWithModel(
+                model: _model.backbarModel,
+                updateCallback: () => setState(() {}),
+                child: BackbarWidget(),
+              ),
               Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -132,7 +143,7 @@ class _ForgotPassword1WidgetState extends State<ForgotPassword1Widget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                                 child: TextFormField(
-                                  controller: textController,
+                                  controller: _model.textController,
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -196,6 +207,8 @@ class _ForgotPassword1WidgetState extends State<ForgotPassword1Widget> {
                                         letterSpacing: 0.5,
                                         fontWeight: FontWeight.normal,
                                       ),
+                                  validator: _model.textControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                             ),

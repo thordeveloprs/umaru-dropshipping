@@ -5,20 +5,32 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'shop_page_model.dart';
+export 'shop_page_model.dart';
 
-class CategoryPage1Widget extends StatefulWidget {
-  const CategoryPage1Widget({Key? key}) : super(key: key);
+class ShopPageWidget extends StatefulWidget {
+  const ShopPageWidget({Key? key}) : super(key: key);
 
   @override
-  _CategoryPage1WidgetState createState() => _CategoryPage1WidgetState();
+  _ShopPageWidgetState createState() => _ShopPageWidgetState();
 }
 
-class _CategoryPage1WidgetState extends State<CategoryPage1Widget> {
-  final _unfocusNode = FocusNode();
+class _ShopPageWidgetState extends State<ShopPageWidget> {
+  late ShopPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ShopPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -37,8 +49,12 @@ class _CategoryPage1WidgetState extends State<CategoryPage1Widget> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                AppBarWidget(
-                  appTitle: 'Shop',
+                wrapWithModel(
+                  model: _model.appBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: AppBarWidget(
+                    appTitle: 'Shop',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(15, 33, 15, 0),

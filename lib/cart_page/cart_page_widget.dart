@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'cart_page_model.dart';
+export 'cart_page_model.dart';
 
 class CartPageWidget extends StatefulWidget {
   const CartPageWidget({Key? key}) : super(key: key);
@@ -14,20 +16,22 @@ class CartPageWidget extends StatefulWidget {
 }
 
 class _CartPageWidgetState extends State<CartPageWidget> {
-  TextEditingController? textController;
-  final _unfocusNode = FocusNode();
+  late CartPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    _model = createModel(context, () => CartPageModel());
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController?.dispose();
     super.dispose();
   }
 
@@ -45,8 +49,12 @@ class _CartPageWidgetState extends State<CartPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBarWidget(
-                  appTitle: 'Cart',
+                wrapWithModel(
+                  model: _model.appBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: AppBarWidget(
+                    appTitle: 'Cart',
+                  ),
                 ),
                 ListView(
                   padding: EdgeInsets.zero,
@@ -317,141 +325,6 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 31, 16, 0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 110,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF2F2F2),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(21, 16, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'Checkout as a guest',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.black,
-                                      letterSpacing: 0.5,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(21, 9, 21, 0),
-                          child: Container(
-                            width: 294,
-                            height: 48,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      18, 0, 0, 0),
-                                  child: Image.asset(
-                                    'assets/images/Message.png',
-                                    width: 20,
-                                    height: 15.5,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12, 0, 0, 0),
-                                    child: TextFormField(
-                                      controller: textController,
-                                      autofocus: true,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        hintText: 'Your Email',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFFACAEB4),
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                        errorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                        focusedErrorBorder:
-                                            UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0xFFACAEB4),
-                                            fontSize: 12,
-                                            letterSpacing: 0.5,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 31, 16, 0),
                   child: InkWell(
                     onTap: () async {
                       context.pushNamed('Shippinginfo_page');
@@ -530,92 +403,6 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16, 31, 16, 0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 110,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF2F2F2),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(21, 16, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Payment Method',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.black,
-                                      letterSpacing: 0.5,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(21, 18, 21, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/Ellipse_127.png',
-                                    width: 10,
-                                    height: 10,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Image.asset(
-                                    'assets/images/Group_818.png',
-                                    width: 10,
-                                    height: 10,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    21, 0, 19, 0),
-                                child: Image.asset(
-                                  'assets/images/Credit_Card.png',
-                                  width: 18,
-                                  height: 13.5,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Text(
-                                'Credit Card Or Debit',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                      letterSpacing: 0.5,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                 ),

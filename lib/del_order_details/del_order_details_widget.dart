@@ -4,20 +4,32 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'del_order_details_model.dart';
+export 'del_order_details_model.dart';
 
-class OrderDetailsWidget extends StatefulWidget {
-  const OrderDetailsWidget({Key? key}) : super(key: key);
+class DelOrderDetailsWidget extends StatefulWidget {
+  const DelOrderDetailsWidget({Key? key}) : super(key: key);
 
   @override
-  _OrderDetailsWidgetState createState() => _OrderDetailsWidgetState();
+  _DelOrderDetailsWidgetState createState() => _DelOrderDetailsWidgetState();
 }
 
-class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
-  final _unfocusNode = FocusNode();
+class _DelOrderDetailsWidgetState extends State<DelOrderDetailsWidget> {
+  late DelOrderDetailsModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => DelOrderDetailsModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -36,8 +48,12 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                AppBar2Widget(
-                  appTitle: 'Order Details',
+                wrapWithModel(
+                  model: _model.appBar2Model,
+                  updateCallback: () => setState(() {}),
+                  child: AppBar2Widget(
+                    appTitle: 'Order Details',
+                  ),
                 ),
                 Container(
                   width: double.infinity,

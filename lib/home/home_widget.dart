@@ -4,6 +4,8 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'home_model.dart';
+export 'home_model.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -13,11 +15,21 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  final _unfocusNode = FocusNode();
+  late HomeModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => HomeModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -98,7 +110,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                       child: InkWell(
                         onTap: () async {
-                          context.pushNamed('category_Page1');
+                          context.pushNamed('ShopPage');
                         },
                         child: Image.asset(
                           'assets/images/Screen_Shot_2022-12-02_at_2.09_2.png',
@@ -332,7 +344,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                   child: InkWell(
                     onTap: () async {
-                      context.pushNamed('category_Page1');
+                      context.pushNamed('ShopPage');
                     },
                     child: Image.asset(
                       'assets/images/6a05df173eb166ed04da736727a3aa29.png',

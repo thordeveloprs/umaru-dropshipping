@@ -5,6 +5,8 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'wish_list_model.dart';
+export 'wish_list_model.dart';
 
 class WishListWidget extends StatefulWidget {
   const WishListWidget({Key? key}) : super(key: key);
@@ -14,11 +16,21 @@ class WishListWidget extends StatefulWidget {
 }
 
 class _WishListWidgetState extends State<WishListWidget> {
-  final _unfocusNode = FocusNode();
+  late WishListModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => WishListModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -37,8 +49,12 @@ class _WishListWidgetState extends State<WishListWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBarWidget(
-                  appTitle: 'Wish List',
+                wrapWithModel(
+                  model: _model.appBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: AppBarWidget(
+                    appTitle: 'Wish List',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(14, 26, 14, 0),

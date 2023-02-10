@@ -3,6 +3,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'menu_model.dart';
+export 'menu_model.dart';
 
 class MenuWidget extends StatefulWidget {
   const MenuWidget({Key? key}) : super(key: key);
@@ -12,11 +14,21 @@ class MenuWidget extends StatefulWidget {
 }
 
 class _MenuWidgetState extends State<MenuWidget> {
-  final _unfocusNode = FocusNode();
+  late MenuModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => MenuModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -71,7 +83,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 EdgeInsetsDirectional.fromSTEB(19, 0, 19, 0),
                             child: InkWell(
                               onTap: () async {
-                                context.pushNamed('category_Page1');
+                                context.pushNamed('ShopPage');
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -361,7 +373,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(19, 0, 19, 0),
                           child: InkWell(
                             onTap: () async {
-                              context.pushNamed('shipping_Page');
+                              context.pushNamed('shipping_Policy');
                             },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -408,7 +420,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                               EdgeInsetsDirectional.fromSTEB(19, 0, 19, 69.5),
                           child: InkWell(
                             onTap: () async {
-                              context.pushNamed('shipping_Page');
+                              context.pushNamed('shipping_Policy');
                             },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,

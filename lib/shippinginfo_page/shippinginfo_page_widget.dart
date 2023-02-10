@@ -6,6 +6,8 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'shippinginfo_page_model.dart';
+export 'shippinginfo_page_model.dart';
 
 class ShippinginfoPageWidget extends StatefulWidget {
   const ShippinginfoPageWidget({Key? key}) : super(key: key);
@@ -15,11 +17,21 @@ class ShippinginfoPageWidget extends StatefulWidget {
 }
 
 class _ShippinginfoPageWidgetState extends State<ShippinginfoPageWidget> {
-  final _unfocusNode = FocusNode();
+  late ShippinginfoPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ShippinginfoPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -38,8 +50,12 @@ class _ShippinginfoPageWidgetState extends State<ShippinginfoPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AddAddressAppBarWidget(
-                  appTitle: 'Shipping Info',
+                wrapWithModel(
+                  model: _model.addAddressAppBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: AddAddressAppBarWidget(
+                    appTitle: 'Shipping Info',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),

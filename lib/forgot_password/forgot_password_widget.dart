@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'forgot_password_model.dart';
+export 'forgot_password_model.dart';
 
 class ForgotPasswordWidget extends StatefulWidget {
   const ForgotPasswordWidget({Key? key}) : super(key: key);
@@ -14,20 +16,24 @@ class ForgotPasswordWidget extends StatefulWidget {
 }
 
 class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
-  TextEditingController? textController;
-  final _unfocusNode = FocusNode();
+  late ForgotPasswordModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    _model = createModel(context, () => ForgotPasswordModel());
+
+    _model.textController = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController?.dispose();
     super.dispose();
   }
 
@@ -44,7 +50,11 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              BackbarWidget(),
+              wrapWithModel(
+                model: _model.backbarModel,
+                updateCallback: () => setState(() {}),
+                child: BackbarWidget(),
+              ),
               Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -162,8 +172,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                                                 .fromSTEB(12, 0,
                                                                     0, 0),
                                                         child: TextFormField(
-                                                          controller:
-                                                              textController,
+                                                          controller: _model
+                                                              .textController,
                                                           autofocus: true,
                                                           obscureText: false,
                                                           decoration:
@@ -277,6 +287,10 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                                                     FontWeight
                                                                         .normal,
                                                               ),
+                                                          validator: _model
+                                                              .textControllerValidator
+                                                              .asValidator(
+                                                                  context),
                                                         ),
                                                       ),
                                                     ),

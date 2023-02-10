@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'count_controller_model.dart';
+export 'count_controller_model.dart';
 
 class CountControllerWidget extends StatefulWidget {
   const CountControllerWidget({Key? key}) : super(key: key);
@@ -14,7 +16,26 @@ class CountControllerWidget extends StatefulWidget {
 }
 
 class _CountControllerWidgetState extends State<CountControllerWidget> {
-  int? countControllerValue;
+  late CountControllerModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => CountControllerModel());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +75,11 @@ class _CountControllerWidgetState extends State<CountControllerWidget> {
               fontSize: 12,
             ),
           ),
-          count: countControllerValue ??= 0,
+          count: _model.countControllerValue ??= 0,
           updateCount: (count) async {
-            setState(() => countControllerValue = count);
+            setState(() => _model.countControllerValue = count);
             setState(() {
-              FFAppState().count = countControllerValue!;
+              FFAppState().count = _model.countControllerValue!;
             });
           },
           stepSize: 1,

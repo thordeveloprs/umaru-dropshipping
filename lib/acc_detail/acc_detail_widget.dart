@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'acc_detail_model.dart';
+export 'acc_detail_model.dart';
 
 class AccDetailWidget extends StatefulWidget {
   const AccDetailWidget({Key? key}) : super(key: key);
@@ -14,26 +16,26 @@ class AccDetailWidget extends StatefulWidget {
 }
 
 class _AccDetailWidgetState extends State<AccDetailWidget> {
-  TextEditingController? textController1;
-  TextEditingController? textController2;
-  TextEditingController? textController3;
-  final _unfocusNode = FocusNode();
+  late AccDetailModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
+    _model = createModel(context, () => AccDetailModel());
+
+    _model.textController1 = TextEditingController();
+    _model.textController2 = TextEditingController();
+    _model.textController3 = TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    textController1?.dispose();
-    textController2?.dispose();
-    textController3?.dispose();
     super.dispose();
   }
 
@@ -51,8 +53,12 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBar2Widget(
-                  appTitle: 'Account details',
+                wrapWithModel(
+                  model: _model.appBar2Model,
+                  updateCallback: () => setState(() {}),
+                  child: AppBar2Widget(
+                    appTitle: 'Account details',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(27.5, 37, 27.5, 0),
@@ -88,7 +94,7 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                             child: TextFormField(
-                              controller: textController1,
+                              controller: _model.textController1,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -149,6 +155,8 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                                     color: Color(0xFFB8B8B8),
                                     letterSpacing: 0.5,
                                   ),
+                              validator: _model.textController1Validator
+                                  .asValidator(context),
                             ),
                           ),
                         ),
@@ -190,7 +198,7 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                             child: TextFormField(
-                              controller: textController2,
+                              controller: _model.textController2,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -251,6 +259,8 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                                     color: Color(0xFFB8B8B8),
                                     letterSpacing: 0.5,
                                   ),
+                              validator: _model.textController2Validator
+                                  .asValidator(context),
                             ),
                           ),
                         ),
@@ -292,7 +302,7 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                             child: TextFormField(
-                              controller: textController3,
+                              controller: _model.textController3,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -353,6 +363,8 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                                     color: Color(0xFFB8B8B8),
                                     letterSpacing: 0.5,
                                   ),
+                              validator: _model.textController3Validator
+                                  .asValidator(context),
                             ),
                           ),
                         ),

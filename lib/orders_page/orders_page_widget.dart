@@ -6,6 +6,8 @@ import 'package:styled_divider/styled_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'orders_page_model.dart';
+export 'orders_page_model.dart';
 
 class OrdersPageWidget extends StatefulWidget {
   const OrdersPageWidget({Key? key}) : super(key: key);
@@ -15,11 +17,21 @@ class OrdersPageWidget extends StatefulWidget {
 }
 
 class _OrdersPageWidgetState extends State<OrdersPageWidget> {
-  final _unfocusNode = FocusNode();
+  late OrdersPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => OrdersPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -38,8 +50,12 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                AppBar2Widget(
-                  appTitle: 'Orders',
+                wrapWithModel(
+                  model: _model.appBar2Model,
+                  updateCallback: () => setState(() {}),
+                  child: AppBar2Widget(
+                    appTitle: 'Orders',
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 25, 16, 0),

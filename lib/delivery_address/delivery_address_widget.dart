@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'delivery_address_model.dart';
+export 'delivery_address_model.dart';
 
 class DeliveryAddressWidget extends StatefulWidget {
   const DeliveryAddressWidget({Key? key}) : super(key: key);
@@ -14,11 +16,21 @@ class DeliveryAddressWidget extends StatefulWidget {
 }
 
 class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
-  final _unfocusNode = FocusNode();
+  late DeliveryAddressModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => DeliveryAddressModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -43,8 +55,12 @@ class _DeliveryAddressWidgetState extends State<DeliveryAddressWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        AddAddressAppBarWidget(
-                          appTitle: 'Delivery Address',
+                        wrapWithModel(
+                          model: _model.addAddressAppBarModel,
+                          updateCallback: () => setState(() {}),
+                          child: AddAddressAppBarWidget(
+                            appTitle: 'Delivery Address',
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
