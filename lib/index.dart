@@ -1,10 +1,10 @@
 // Export pages
 export 'splash_screen/splash_screen_widget.dart' show SplashScreenWidget;
 export 'home/home_widget.dart' show HomeWidget;
-export 'menu/menu_widget.dart' show MenuWidget;
 export 'shop_page/shop_page_widget.dart' show ShopPageWidget;
-export 'filter_page/filter_page_widget.dart' show FilterPageWidget;
+export 'menu/menu_widget.dart' show MenuWidget;
 export 'category_page/category_page_widget.dart' show CategoryPageWidget;
+export 'filter_page/filter_page_widget.dart' show FilterPageWidget;
 export 'sales_page/sales_page_widget.dart' show SalesPageWidget;
 export 'wish_list/wish_list_widget.dart' show WishListWidget;
 export 'cart_page/cart_page_widget.dart' show CartPageWidget;

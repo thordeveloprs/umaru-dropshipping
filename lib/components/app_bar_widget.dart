@@ -48,23 +48,19 @@ class _AppBarWidgetState extends State<AppBarWidget> {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
+        Expanded(
           child: InkWell(
             onTap: () async {
               context.pop();
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    color: Color(0xFFC7C7CC),
-                    size: 24,
-                  ),
+                Icon(
+                  Icons.arrow_back_ios,
+                  color: Color(0xFFC7C7CC),
+                  size: 24,
                 ),
                 Text(
                   'Back',
@@ -80,14 +76,14 @@ class _AppBarWidgetState extends State<AppBarWidget> {
             ),
           ),
         ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
+        Expanded(
+          flex: 2,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Text(
                   widget.appTitle!,
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -97,28 +93,24 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                         fontWeight: FontWeight.w500,
                       ),
                 ),
-              ],
-            ),
-          ],
-        ),
-        Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 30, 0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InkWell(
-                onTap: () async {
-                  context.pushNamed('Cart_Page');
-                },
-                child: Image.asset(
-                  'assets/images/bag_(2)_1.png',
-                  width: 17.4,
-                  height: 23.7,
-                  fit: BoxFit.cover,
-                ),
               ),
             ],
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Icon(
+                  Icons.shopping_bag_outlined,
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                  size: 24,
+                ),
+              ],
+            ),
           ),
         ),
       ],

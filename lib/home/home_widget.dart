@@ -210,7 +210,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(13, 18, 0, 0),
+                                                    .fromSTEB(5, 18, 5, 0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -239,7 +239,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(13, 4, 0, 10),
+                                                    .fromSTEB(5, 4, 5, 5),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -294,7 +294,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.8, 0.23),
+                                          AlignmentDirectional(0.78, 0.14),
                                       child: Container(
                                         width: 24,
                                         height: 24,
@@ -314,18 +314,21 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Image.asset(
-                                              'assets/images/Vector.png',
-                                              width: 10.4,
-                                              height: 9.4,
-                                              fit: BoxFit.cover,
-                                            ),
-                                            Image.asset(
-                                              'assets/images/love.png',
-                                              width: 10.4,
-                                              height: 9.4,
-                                              fit: BoxFit.cover,
-                                            ),
+                                            if (FFAppState().isWishlist ==
+                                                false)
+                                              Image.asset(
+                                                'assets/images/Vector.png',
+                                                width: 10.4,
+                                                height: 9.4,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            if (FFAppState().isWishlist == true)
+                                              Image.asset(
+                                                'assets/images/love.png',
+                                                width: 10.4,
+                                                height: 9.4,
+                                                fit: BoxFit.cover,
+                                              ),
                                           ],
                                         ),
                                       ),
@@ -569,18 +572,22 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  Image.asset(
-                                                    'assets/images/Vector.png',
-                                                    width: 10.4,
-                                                    height: 9.4,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  Image.asset(
-                                                    'assets/images/love.png',
-                                                    width: 10.4,
-                                                    height: 9.4,
-                                                    fit: BoxFit.cover,
-                                                  ),
+                                                  if (FFAppState().isWishlist ==
+                                                      false)
+                                                    Image.asset(
+                                                      'assets/images/Vector.png',
+                                                      width: 10.4,
+                                                      height: 9.4,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  if (FFAppState().isWishlist ==
+                                                      true)
+                                                    Image.asset(
+                                                      'assets/images/love.png',
+                                                      width: 10.4,
+                                                      height: 9.4,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                 ],
                                               ),
                                             ),

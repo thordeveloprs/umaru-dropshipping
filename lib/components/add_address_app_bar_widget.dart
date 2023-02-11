@@ -48,70 +48,77 @@ class _AddAddressAppBarWidgetState extends State<AddAddressAppBarWidget> {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        InkWell(
-          onTap: () async {
-            context.pop();
-          },
+        Expanded(
+          flex: 1,
+          child: InkWell(
+            onTap: () async {
+              context.pop();
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(9, 0, 5, 0),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    color: Color(0xFFC7C7CC),
+                    size: 24,
+                  ),
+                ),
+                Text(
+                  'Back',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFFC7C7CC),
+                        fontSize: 17,
+                        letterSpacing: 0.41,
+                        fontWeight: FontWeight.normal,
+                      ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 2,
           child: Row(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(9, 0, 5, 0),
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Color(0xFFC7C7CC),
-                  size: 24,
+              Expanded(
+                child: Text(
+                  widget.appTitle!,
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFF1C86C2),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
-              ),
-              Text(
-                'Back',
-                style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Poppins',
-                      color: Color(0xFFC7C7CC),
-                      fontSize: 17,
-                      letterSpacing: 0.41,
-                      fontWeight: FontWeight.normal,
-                    ),
               ),
             ],
           ),
         ),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              widget.appTitle!,
-              textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).bodyText1.override(
-                    fontFamily: 'Poppins',
-                    color: Color(0xFF1C86C2),
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 15.64, 0),
-              child: InkWell(
+        Expanded(
+          flex: 1,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
                 onTap: () async {
                   context.pushNamed('add_Address_Page');
                 },
-                child: Image.asset(
-                  'assets/images/Plus.png',
-                  width: 24,
-                  height: 24,
-                  fit: BoxFit.cover,
+                child: Icon(
+                  Icons.add,
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                  size: 24,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

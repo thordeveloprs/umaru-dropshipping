@@ -165,7 +165,7 @@ class _WishListWidgetState extends State<WishListWidget> {
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 6, 0, 0),
+                                                                0, 3, 0, 0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -225,7 +225,7 @@ class _WishListWidgetState extends State<WishListWidget> {
                                 ],
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.8, 0.23),
+                                alignment: AlignmentDirectional(0.79, 0.31),
                                 child: Container(
                                   width: 24,
                                   height: 24,
@@ -244,18 +244,20 @@ class _WishListWidgetState extends State<WishListWidget> {
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Image.asset(
-                                        'assets/images/Vector.png',
-                                        width: 10.4,
-                                        height: 9.4,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      Image.asset(
-                                        'assets/images/love.png',
-                                        width: 10.4,
-                                        height: 9.4,
-                                        fit: BoxFit.cover,
-                                      ),
+                                      if (FFAppState().isWishlist == false)
+                                        Image.asset(
+                                          'assets/images/Vector.png',
+                                          width: 10.4,
+                                          height: 9.4,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      if (FFAppState().isWishlist == true)
+                                        Image.asset(
+                                          'assets/images/love.png',
+                                          width: 10.4,
+                                          height: 9.4,
+                                          fit: BoxFit.cover,
+                                        ),
                                     ],
                                   ),
                                 ),

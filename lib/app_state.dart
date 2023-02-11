@@ -29,6 +29,12 @@ class FFAppState extends ChangeNotifier {
   set count(int _value) {
     _count = _value;
   }
+
+  bool _isWishlist = false;
+  bool get isWishlist => _isWishlist;
+  set isWishlist(bool _value) {
+    _isWishlist = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

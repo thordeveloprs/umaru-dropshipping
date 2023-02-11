@@ -48,37 +48,37 @@ class _AppBar2WidgetState extends State<AppBar2Widget> {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        InkWell(
-          onTap: () async {
-            context.pop();
-          },
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(9, 0, 5, 0),
-                child: Icon(
+        Expanded(
+          flex: 1,
+          child: InkWell(
+            onTap: () async {
+              context.pop();
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
                   Icons.arrow_back_ios,
                   color: Color(0xFFC7C7CC),
                   size: 24,
                 ),
-              ),
-              Text(
-                'Back',
-                style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Poppins',
-                      color: Color(0xFFC7C7CC),
-                      fontSize: 17,
-                      letterSpacing: 0.41,
-                      fontWeight: FontWeight.normal,
-                    ),
-              ),
-            ],
+                Text(
+                  'Back',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFFC7C7CC),
+                        fontSize: 17,
+                        letterSpacing: 0.41,
+                        fontWeight: FontWeight.normal,
+                      ),
+                ),
+              ],
+            ),
           ),
         ),
         Expanded(
-          flex: 1,
+          flex: 2,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -98,10 +98,13 @@ class _AppBar2WidgetState extends State<AppBar2Widget> {
             ],
           ),
         ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [],
+        Expanded(
+          flex: 1,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [],
+          ),
         ),
       ],
     );

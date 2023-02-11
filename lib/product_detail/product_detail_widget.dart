@@ -63,27 +63,36 @@ class _ProductDetailWidgetState extends State<ProductDetailWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
-                          child: InkWell(
-                            onTap: () async {
-                              context.pop();
-                            },
-                            child: Icon(
-                              Icons.arrow_back_ios,
-                              color: Color(0xFFC7C7CC),
-                              size: 24,
-                            ),
+                        Expanded(
+                          flex: 1,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: InkWell(
+                                  onTap: () async {
+                                    context.pop();
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    color: Color(0xFFC7C7CC),
+                                    size: 24,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         Expanded(
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 9, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
+                          flex: 2,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Text(
                                   'Product Detail',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
@@ -94,8 +103,15 @@ class _ProductDetailWidgetState extends State<ProductDetailWidget> {
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [],
                           ),
                         ),
                       ],

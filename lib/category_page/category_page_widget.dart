@@ -49,7 +49,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: SingleChildScrollView(
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 wrapWithModel(
                   model: _model.appBarModel,
@@ -187,41 +187,40 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 26, 0, 0),
-                        child: Builder(
-                          builder: (context) {
-                            final bestSellerData = List.generate(
-                                random_data.randomInteger(4, 4),
-                                (index) => random_data.randomImageUrl(
-                                      0,
-                                      0,
-                                    )).toList();
-                            return GridView.builder(
-                              padding: EdgeInsets.zero,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 10,
-                                mainAxisSpacing: 28,
-                                childAspectRatio: 1,
-                              ),
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: bestSellerData.length,
-                              itemBuilder: (context, bestSellerDataIndex) {
-                                final bestSellerDataItem =
-                                    bestSellerData[bestSellerDataIndex];
-                                return InkWell(
-                                  onTap: () async {
-                                    context.pushNamed('product_Detail');
-                                  },
-                                  child: Stack(
+                      Builder(
+                        builder: (context) {
+                          final bestSellerData = List.generate(
+                              random_data.randomInteger(4, 4),
+                              (index) => random_data.randomImageUrl(
+                                    0,
+                                    0,
+                                  )).toList();
+                          return GridView.builder(
+                            padding: EdgeInsets.zero,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 30,
+                              childAspectRatio: 1,
+                            ),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: bestSellerData.length,
+                            itemBuilder: (context, bestSellerDataIndex) {
+                              final bestSellerDataItem =
+                                  bestSellerData[bestSellerDataIndex];
+                              return Stack(
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () async {
+                                            context.pushNamed('product_Detail');
+                                          },
+                                          child: Container(
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -242,98 +241,119 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(25, 18, 25, 0),
+                                                      .fromSTEB(25, 10, 25, 0),
                                                   child: Image.asset(
                                                     'assets/images/image_61.png',
                                                     width:
                                                         MediaQuery.of(context)
                                                                 .size
                                                                 .width *
-                                                            0.32,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.058,
-                                                    fit: BoxFit.contain,
+                                                            0.315,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(13, 18, 0, 0),
-                                                  child: Row(
+                                                      .fromSTEB(13, 0, 13, 0),
+                                                  child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
-                                                      Text(
-                                                        'Product name goes here',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyText1
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              color: Color(
-                                                                  0xFF050404),
-                                                              fontSize: 11.5,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 15,
+                                                                    0, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              'Product name goes here',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF050404),
+                                                                    fontSize:
+                                                                        11.5,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
                                                             ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(13, 6, 0, 10),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: [
-                                                      Text(
-                                                        '150.0',
-                                                        textAlign:
-                                                            TextAlign.start,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: Color(
-                                                                      0xFF050404),
-                                                                  fontSize: 10,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
+                                                          ],
+                                                        ),
                                                       ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    5, 0, 0, 0),
-                                                        child: Text(
-                                                          'FCFA',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                fontSize: 10,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
+                                                                    0, 3, 0, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              '150.0',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Color(
+                                                                        0xFF050404),
+                                                                    fontSize:
+                                                                        10,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                              child: Text(
+                                                                'FCFA',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                    ),
                                                               ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                     ],
@@ -342,53 +362,54 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                                               ],
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.8, 0.23),
-                                        child: Container(
-                                          width: 24,
-                                          height: 24,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 2,
-                                                color: Color(0x3E000000),
-                                                offset: Offset(0, -1),
-                                              )
-                                            ],
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Image.asset(
-                                                'assets/images/Vector.png',
-                                                width: 10.4,
-                                                height: 9.4,
-                                                fit: BoxFit.cover,
-                                              ),
-                                              Image.asset(
-                                                'assets/images/love.png',
-                                                width: 10.4,
-                                                height: 9.4,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ],
-                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
-                                );
-                              },
-                            );
-                          },
-                        ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.79, 0.31),
+                                    child: Container(
+                                      width: 24,
+                                      height: 24,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 2,
+                                            color: Color(0x3E000000),
+                                            offset: Offset(0, -1),
+                                          )
+                                        ],
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          if (FFAppState().isWishlist == false)
+                                            Image.asset(
+                                              'assets/images/Vector.png',
+                                              width: 10.4,
+                                              height: 9.4,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          if (FFAppState().isWishlist == true)
+                                            Image.asset(
+                                              'assets/images/love.png',
+                                              width: 10.4,
+                                              height: 9.4,
+                                              fit: BoxFit.cover,
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                       ),
                     ],
                   ),

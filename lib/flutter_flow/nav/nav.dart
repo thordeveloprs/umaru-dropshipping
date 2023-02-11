@@ -69,13 +69,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomeWidget(),
             ),
             FFRoute(
-              name: 'Menu',
-              path: 'menu',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Menu')
-                  : MenuWidget(),
-            ),
-            FFRoute(
               name: 'ShopPage',
               path: 'shopPage',
               builder: (context, params) => params.isEmpty
@@ -83,14 +76,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : ShopPageWidget(),
             ),
             FFRoute(
-              name: 'FilterPage',
-              path: 'filterPage',
-              builder: (context, params) => FilterPageWidget(),
+              name: 'Menu',
+              path: 'menu',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Menu')
+                  : MenuWidget(),
             ),
             FFRoute(
               name: 'category_Page',
               path: 'categoryPage',
               builder: (context, params) => CategoryPageWidget(),
+            ),
+            FFRoute(
+              name: 'FilterPage',
+              path: 'filterPage',
+              builder: (context, params) => FilterPageWidget(),
             ),
             FFRoute(
               name: 'SalesPage',
