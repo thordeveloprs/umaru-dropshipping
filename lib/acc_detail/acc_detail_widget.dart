@@ -1,3 +1,4 @@
+import '../backend/api_requests/api_calls.dart';
 import '../components/app_bar2_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -26,9 +27,21 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
     super.initState();
     _model = createModel(context, () => AccDetailModel());
 
-    _model.textController1 = TextEditingController();
-    _model.textController2 = TextEditingController();
-    _model.textController3 = TextEditingController();
+    _model.textController1 ??= TextEditingController(
+        text: getJsonField(
+      FFAppState().userdata,
+      r'''$.firsname''',
+    ).toString().toString());
+    _model.textController2 ??= TextEditingController(
+        text: getJsonField(
+      FFAppState().userdata,
+      r'''$.email''',
+    ).toString().toString());
+    _model.textController3 ??= TextEditingController(
+        text: getJsonField(
+      FFAppState().userdata,
+      r'''$.phone''',
+    ).toString().toString());
   }
 
   @override
@@ -98,7 +111,6 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
-                                hintText: 'Shoukat Hayat',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
@@ -202,7 +214,6 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
-                                hintText: 'shoukat@gmail.com',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
@@ -306,7 +317,6 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
-                                hintText: '+971 55 444 5678',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
@@ -378,13 +388,22 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        'Change Password',
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color: Color(0xFF1C86C2),
-                              fontWeight: FontWeight.w500,
-                            ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () async {
+                            context.pushNamed('changePassword');
+                          },
+                          child: Text(
+                            'Change Password',
+                            textAlign: TextAlign.center,
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xFF1C86C2),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -392,8 +411,74 @@ class _AccDetailWidgetState extends State<AccDetailWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(21, 23, 21, 0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      _model.editAccdetailsResult =
+                          await UmaruMallGroup.profileEditCall.call(
+                        userId: getJsonField(
+                          FFAppState().userdata,
+                          r'''$.id''',
+                        ),
+                        firstName: getJsonField(
+                          FFAppState().userdata,
+                          r'''$.firsname''',
+                        ).toString(),
+                        lastName: getJsonField(
+                          FFAppState().userdata,
+                          r'''$.lastname''',
+                        ).toString(),
+                        email: getJsonField(
+                          FFAppState().userdata,
+                          r'''$.email''',
+                        ).toString(),
+                        phone: getJsonField(
+                          FFAppState().userdata,
+                          r'''$.phone''',
+                        ).toString(),
+                        token: FFAppState().token,
+                      );
+                      if (getJsonField(
+                            (_model.editAccdetailsResult?.jsonBody ?? ''),
+                            r'''$.status''',
+                          ) ==
+                          '1') {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              getJsonField(
+                                (_model.editAccdetailsResult?.jsonBody ?? ''),
+                                r'''$.message''',
+                              ).toString(),
+                              style: TextStyle(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).textColor,
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              getJsonField(
+                                (_model.editAccdetailsResult?.jsonBody ?? ''),
+                                r'''$.message''',
+                              ).toString(),
+                              style: TextStyle(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).textColor,
+                          ),
+                        );
+                      }
+
+                      setState(() {});
                     },
                     text: 'Edit',
                     options: FFButtonOptions(

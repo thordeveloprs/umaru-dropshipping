@@ -6,18 +6,19 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'shippinginfo_page_model.dart';
-export 'shippinginfo_page_model.dart';
+import 'del_shippinginfo_page_model.dart';
+export 'del_shippinginfo_page_model.dart';
 
-class ShippinginfoPageWidget extends StatefulWidget {
-  const ShippinginfoPageWidget({Key? key}) : super(key: key);
+class DelShippinginfoPageWidget extends StatefulWidget {
+  const DelShippinginfoPageWidget({Key? key}) : super(key: key);
 
   @override
-  _ShippinginfoPageWidgetState createState() => _ShippinginfoPageWidgetState();
+  _DelShippinginfoPageWidgetState createState() =>
+      _DelShippinginfoPageWidgetState();
 }
 
-class _ShippinginfoPageWidgetState extends State<ShippinginfoPageWidget> {
-  late ShippinginfoPageModel _model;
+class _DelShippinginfoPageWidgetState extends State<DelShippinginfoPageWidget> {
+  late DelShippinginfoPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -25,7 +26,7 @@ class _ShippinginfoPageWidgetState extends State<ShippinginfoPageWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ShippinginfoPageModel());
+    _model = createModel(context, () => DelShippinginfoPageModel());
   }
 
   @override

@@ -1,3 +1,4 @@
+import '../backend/api_requests/api_calls.dart';
 import '../components/app_bar2_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -17,7 +18,9 @@ class OrderHistoryModel extends FlutterFlowModel {
     appBar2Model = createModel(context, () => AppBar2Model());
   }
 
-  void dispose() {}
+  void dispose() {
+    appBar2Model.dispose();
+  }
 
   /// Additional helper methods are added here.
 

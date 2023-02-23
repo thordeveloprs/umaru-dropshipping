@@ -1,3 +1,4 @@
+import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -15,8 +16,8 @@ class ProductDetailModel extends FlutterFlowModel {
   PageController? pageViewController;
   // State field(s) for RatingBar widget.
   double? ratingBarValue1;
-  // State field(s) for RatingBar widget.
-  double? ratingBarValue2;
+  // Stores action output result for [Backend Call - API (Add to cart)] action in Button widget.
+  ApiCallResponse? addtocartResult;
 
   /// Initialization and disposal methods.
 

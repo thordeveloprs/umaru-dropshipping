@@ -6,18 +6,18 @@ import 'package:styled_divider/styled_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'orders_page_model.dart';
-export 'orders_page_model.dart';
+import 'del_orders_page_model.dart';
+export 'del_orders_page_model.dart';
 
-class OrdersPageWidget extends StatefulWidget {
-  const OrdersPageWidget({Key? key}) : super(key: key);
+class DelOrdersPageWidget extends StatefulWidget {
+  const DelOrdersPageWidget({Key? key}) : super(key: key);
 
   @override
-  _OrdersPageWidgetState createState() => _OrdersPageWidgetState();
+  _DelOrdersPageWidgetState createState() => _DelOrdersPageWidgetState();
 }
 
-class _OrdersPageWidgetState extends State<OrdersPageWidget> {
-  late OrdersPageModel _model;
+class _DelOrdersPageWidgetState extends State<DelOrdersPageWidget> {
+  late DelOrdersPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -25,7 +25,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => OrdersPageModel());
+    _model = createModel(context, () => DelOrdersPageModel());
   }
 
   @override

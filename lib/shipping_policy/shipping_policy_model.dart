@@ -17,7 +17,9 @@ class ShippingPolicyModel extends FlutterFlowModel {
     appBar2Model = createModel(context, () => AppBar2Model());
   }
 
-  void dispose() {}
+  void dispose() {
+    appBar2Model.dispose();
+  }
 
   /// Additional helper methods are added here.
 

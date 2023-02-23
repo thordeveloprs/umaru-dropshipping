@@ -52,6 +52,7 @@ class AddAddressPageModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    addAddressAppBarModel.dispose();
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();

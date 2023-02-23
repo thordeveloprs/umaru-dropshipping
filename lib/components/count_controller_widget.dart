@@ -32,7 +32,7 @@ class _CountControllerWidgetState extends State<CountControllerWidget> {
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }

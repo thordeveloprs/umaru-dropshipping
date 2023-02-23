@@ -60,7 +60,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(15, 26, 15, 0),
                   child: InkWell(
                     onTap: () async {
-                      context.pushNamed('ShopPage');
+                      context.pushNamed('AllcategoryShopPage');
                     },
                     child: Image.asset(
                       'assets/images/Screen_Shot_2022-12-02_at_2.14_1.png',

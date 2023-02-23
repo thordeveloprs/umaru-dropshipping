@@ -35,7 +35,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }
@@ -49,30 +49,33 @@ class _AppBarWidgetState extends State<AppBarWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
-          child: InkWell(
-            onTap: () async {
-              context.pop();
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(
-                  Icons.arrow_back_ios,
-                  color: Color(0xFFC7C7CC),
-                  size: 24,
-                ),
-                Text(
-                  'Back',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFC7C7CC),
-                        fontSize: 17,
-                        letterSpacing: 0.41,
-                        fontWeight: FontWeight.normal,
-                      ),
-                ),
-              ],
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+            child: InkWell(
+              onTap: () async {
+                context.pop();
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.arrow_back_ios,
+                    color: Color(0xFFC7C7CC),
+                    size: 24,
+                  ),
+                  Text(
+                    'Back',
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFC7C7CC),
+                          fontSize: 17,
+                          letterSpacing: 0.41,
+                          fontWeight: FontWeight.normal,
+                        ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -104,10 +107,15 @@ class _AppBarWidgetState extends State<AppBarWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Icon(
-                  Icons.shopping_bag_outlined,
-                  color: FlutterFlowTheme.of(context).primaryColor,
-                  size: 24,
+                InkWell(
+                  onTap: () async {
+                    context.pushNamed('Cart_Page');
+                  },
+                  child: Icon(
+                    Icons.shopping_bag_outlined,
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                    size: 24,
+                  ),
                 ),
               ],
             ),

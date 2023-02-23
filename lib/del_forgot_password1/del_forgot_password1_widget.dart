@@ -27,7 +27,7 @@ class _DelForgotPassword1WidgetState extends State<DelForgotPassword1Widget> {
     super.initState();
     _model = createModel(context, () => DelForgotPassword1Model());
 
-    _model.textController = TextEditingController();
+    _model.textController ??= TextEditingController();
   }
 
   @override

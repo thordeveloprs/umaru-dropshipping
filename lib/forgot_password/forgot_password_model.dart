@@ -1,3 +1,4 @@
+import '../backend/api_requests/api_calls.dart';
 import '../components/backbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -14,6 +15,8 @@ class ForgotPasswordModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Backend Call - API (Forgot Password API)] action in Button widget.
+  ApiCallResponse? forgotResult;
 
   /// Initialization and disposal methods.
 
@@ -22,6 +25,7 @@ class ForgotPasswordModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    backbarModel.dispose();
     textController?.dispose();
   }
 

@@ -20,7 +20,9 @@ class FilterPageModel extends FlutterFlowModel {
     appBarModel = createModel(context, () => AppBarModel());
   }
 
-  void dispose() {}
+  void dispose() {
+    appBarModel.dispose();
+  }
 
   /// Additional helper methods are added here.
 

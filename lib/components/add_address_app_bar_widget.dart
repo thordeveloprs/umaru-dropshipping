@@ -35,7 +35,7 @@ class _AddAddressAppBarWidgetState extends State<AddAddressAppBarWidget> {
 
   @override
   void dispose() {
-    _model.dispose();
+    _model.maybeDispose();
 
     super.dispose();
   }
@@ -103,21 +103,29 @@ class _AddAddressAppBarWidgetState extends State<AddAddressAppBarWidget> {
         ),
         Expanded(
           flex: 1,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              InkWell(
-                onTap: () async {
-                  context.pushNamed('add_Address_Page');
-                },
-                child: Icon(
-                  Icons.add,
-                  color: FlutterFlowTheme.of(context).primaryColor,
-                  size: 24,
+          child: InkWell(
+            onTap: () async {
+              context.pushNamed('add_Address_Page');
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                  child: InkWell(
+                    onTap: () async {
+                      context.pushNamed('add_Address_Page');
+                    },
+                    child: Icon(
+                      Icons.add,
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                      size: 24,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

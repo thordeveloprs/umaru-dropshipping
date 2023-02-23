@@ -22,6 +22,7 @@ class DelForgotPassword1Model extends FlutterFlowModel {
   }
 
   void dispose() {
+    backbarModel.dispose();
     textController?.dispose();
   }
 

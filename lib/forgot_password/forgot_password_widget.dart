@@ -1,3 +1,4 @@
+import '../backend/api_requests/api_calls.dart';
 import '../components/backbar_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -26,7 +27,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
     super.initState();
     _model = createModel(context, () => ForgotPasswordModel());
 
-    _model.textController = TextEditingController();
+    _model.textController ??= TextEditingController();
   }
 
   @override
@@ -299,8 +300,70 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                               ),
                                             ),
                                             FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                _model.forgotResult =
+                                                    await UmaruMallGroup
+                                                        .forgotPasswordAPICall
+                                                        .call(
+                                                  email: _model
+                                                      .textController.text,
+                                                  token: FFAppState().token,
+                                                );
+                                                if (getJsonField(
+                                                      (_model.forgotResult
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.status''',
+                                                    ) ==
+                                                    '1') {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        getJsonField(
+                                                          (_model.forgotResult
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.message''',
+                                                        ).toString(),
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          Color(0x00000000),
+                                                    ),
+                                                  );
+                                                } else {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        getJsonField(
+                                                          (_model.forgotResult
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.message''',
+                                                        ).toString(),
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          Color(0x00000000),
+                                                    ),
+                                                  );
+                                                }
+
+                                                setState(() {});
                                               },
                                               text: 'Sign in\n',
                                               options: FFButtonOptions(

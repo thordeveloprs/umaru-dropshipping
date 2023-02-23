@@ -83,7 +83,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                                 EdgeInsetsDirectional.fromSTEB(19, 0, 19, 0),
                             child: InkWell(
                               onTap: () async {
-                                context.pushNamed('ShopPage');
+                                context.pushNamed('AllcategoryShopPage');
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -416,8 +416,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(19, 0, 19, 69.5),
+                          padding: EdgeInsetsDirectional.fromSTEB(19, 0, 19, 6),
                           child: InkWell(
                             onTap: () async {
                               context.pushNamed('shipping_Policy');
@@ -435,6 +434,57 @@ class _MenuWidgetState extends State<MenuWidget> {
                                     children: [
                                       Text(
                                         'Privacy Policy ',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .textColor,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                      Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Color(0xFF1C86C2),
+                                        size: 24,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Divider(
+                                  thickness: 0.5,
+                                  color: Color(0x4D797979),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(19, 0, 19, 69.5),
+                          child: InkWell(
+                            onTap: () async {
+                              setState(() {
+                                FFAppState().isLogin = false;
+                              });
+
+                              context.pushNamed('Home');
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 21, 0, 21),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Logout',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(

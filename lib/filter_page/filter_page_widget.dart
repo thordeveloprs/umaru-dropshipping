@@ -87,22 +87,17 @@ class _FilterPageWidgetState extends State<FilterPageWidget> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(49, 0, 61, 0),
-                        child: Slider(
-                          activeColor:
-                              FlutterFlowTheme.of(context).primaryColor,
-                          inactiveColor: Color(0xFF9E9E9E),
-                          min: 1,
-                          max: 100,
-                          value: _model.filterSliderValue ??= 1,
-                          divisions: 99,
-                          onChanged: (newValue) {
-                            newValue =
-                                double.parse(newValue.toStringAsFixed(4));
-                            setState(() => _model.filterSliderValue = newValue);
-                          },
-                        ),
+                      Slider(
+                        activeColor: FlutterFlowTheme.of(context).primaryColor,
+                        inactiveColor: Color(0xFF9E9E9E),
+                        min: 1,
+                        max: 100,
+                        value: _model.filterSliderValue ??= 1,
+                        divisions: 99,
+                        onChanged: (newValue) {
+                          newValue = double.parse(newValue.toStringAsFixed(4));
+                          setState(() => _model.filterSliderValue = newValue);
+                        },
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(31, 0, 31, 0),

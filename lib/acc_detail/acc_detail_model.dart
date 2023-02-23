@@ -1,3 +1,4 @@
+import '../backend/api_requests/api_calls.dart';
 import '../components/app_bar2_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -20,6 +21,8 @@ class AccDetailModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
+  // Stores action output result for [Backend Call - API (Profile Edit)] action in Button widget.
+  ApiCallResponse? editAccdetailsResult;
 
   /// Initialization and disposal methods.
 
@@ -28,6 +31,7 @@ class AccDetailModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    appBar2Model.dispose();
     textController1?.dispose();
     textController2?.dispose();
     textController3?.dispose();
